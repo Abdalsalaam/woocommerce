@@ -153,11 +153,10 @@ Claude Desktop, Claude Code, and Cursor use the `mcpServers` property shown abov
 Claude Code users can add the remote server from the command line:
 
 ```bash
-claude mcp add \
+claude mcp add woocommerce_store \
   --env WP_API_URL=https://yourstore.com/wp-json/mcp/mcp-adapter-default-server \
   --env WP_API_USERNAME=your-username \
   --env WP_API_PASSWORD='your-application-password' \
-  woocommerce_store \
   -- npx -y @automattic/mcp-wordpress-remote@latest
 ```
 
