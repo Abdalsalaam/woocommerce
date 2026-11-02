@@ -141,10 +141,10 @@ class FulfillmentsImporterRestControllerTest extends WC_REST_Unit_Test_Case {
 	 * @return string
 	 */
 	private function make_staged_file( string $content, string $extension = 'csv' ): string {
-		// Stage inside the uploads directory, like CSVUploadHelper does in production,
-		// so the controller's staged-path containment checks hold in tests.
-		$upload_dir = wp_upload_dir();
-		$path       = trailingslashit( $upload_dir['basedir'] ) . 'wc-fulfillments-rest-' . wp_generate_uuid4() . '.' . $extension;
+		// Stage inside wc-imports, like CSVUploadHelper does in production, so the
+		// controller's staged-path containment checks hold in tests.
+		$dir  = wc_get_container()->get( CSVUploadHelper::class )->get_import_dir();
+		$path = trailingslashit( $dir ) . 'wc-fulfillments-rest-' . wp_generate_uuid4() . '.' . $extension;
 		file_put_contents( $path, $content ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents -- Test fixture write.
 		$this->temp_files[] = $path;
 		return $path;
