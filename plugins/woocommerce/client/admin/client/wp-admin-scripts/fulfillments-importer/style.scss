@@ -1,0 +1,77 @@
+@import "@wordpress/base-styles/_colors.scss";
+
+.woocommerce-fulfillment-importer-step {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	max-width: 700px;
+	margin: 0 auto;
+
+	h2 {
+		font-size: 16px;
+		line-height: 24px;
+		margin: 0;
+	}
+
+	// Step content sits in cards; the action buttons sit below them, aligned
+	// with the card's end edge. Border, radius and padding are the
+	// @wordpress/ui card defaults.
+	&__card-body {
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		> p {
+			margin: 0;
+		}
+	}
+
+	&__footer {
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 8px;
+	}
+}
+
+// The design system track defaults to a fixed width; the wizard uses the
+// full card width. The extra ancestor wins over the emotion-injected style.
+.woocommerce-fulfillment-importer-step .woocommerce-fulfillment-importer-progress {
+	width: 100%;
+}
+
+.woocommerce-fulfillment-importer-step--import p[role="status"] {
+	font-size: 13px;
+	color: $gray-900;
+}
+
+.woocommerce-fulfillment-importer-counts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+	gap: 12px;
+	margin: 0;
+
+	&__item {
+		// Value above label, keeping dt before dd in the markup.
+		display: flex;
+		flex-direction: column-reverse;
+		justify-content: flex-end;
+		gap: 4px;
+		padding: 16px;
+		border: 1px solid $gray-200;
+		border-radius: 4px;
+	}
+
+	dt {
+		font-size: 12px;
+		line-height: 16px;
+		color: $gray-700;
+	}
+
+	dd {
+		font-size: 20px;
+		line-height: 24px;
+		font-weight: 600;
+		margin: 0;
+	}
+}
