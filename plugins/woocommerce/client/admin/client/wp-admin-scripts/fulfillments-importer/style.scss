@@ -1,5 +1,56 @@
 @import "@wordpress/base-styles/_colors.scss";
 
+.woocommerce-fulfillment-importer-stepper {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 32px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+
+	&__step {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		color: $gray-600;
+		font-size: 13px;
+
+		&.is-current {
+			color: $gray-900;
+			font-weight: 600;
+		}
+
+		// Completed steps stay neutral (check in an outlined circle) instead
+		// of turning green.
+		&.is-completed {
+			color: $gray-900;
+		}
+	}
+
+	&__bullet {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		border: 1px solid currentColor;
+		font-size: 12px;
+		font-weight: 600;
+
+		svg {
+			fill: currentColor;
+		}
+	}
+
+	&__step.is-current &__bullet {
+		background: $gray-900;
+		border-color: $gray-900;
+		color: $white;
+	}
+}
+
 .woocommerce-fulfillment-importer-step {
 	display: flex;
 	flex-direction: column;
@@ -220,5 +271,47 @@
 		line-height: 24px;
 		font-weight: 600;
 		margin: 0;
+	}
+}
+
+.woocommerce-fulfillment-importer-summary {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+
+	// Match the mapping table's header treatment.
+	&__rows .woocommerce-table__header {
+		font-weight: 600;
+		color: $gray-700;
+		font-size: 12px;
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+
+	&__rows .woocommerce-table__item,
+	&__rows .woocommerce-table__header {
+		border-bottom: 1px solid $gray-100;
+	}
+
+	&__load-more {
+		margin-block-start: 16px;
+	}
+
+	.woocommerce-pill {
+		&.is-status-created,
+		&.is-status-updated {
+			border-color: $studio-green-50;
+			color: $studio-green-50;
+		}
+
+		&.is-status-skipped {
+			border-color: $gray-400;
+			color: $gray-700;
+		}
+
+		&.is-status-failed {
+			border-color: $alert-red;
+			color: $alert-red;
+		}
 	}
 }
